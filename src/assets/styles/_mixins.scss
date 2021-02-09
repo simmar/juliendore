@@ -1,0 +1,26 @@
+@import "variables";
+
+// Mixins
+@mixin mobile {
+  @media screen and (max-width: $mobile) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media all and (min-width: $desktop) {
+    @content;
+  }
+}
+
+@mixin font-black {
+  font-family: "CircularSpotifyTxTblack", sans-serif;
+  font-style: normal;
+  font-weight: 900;
+}
+
+@mixin font-book {
+  font-family: "CircularSpotifyTxTBook", sans-serif;
+  font-style: normal;
+  font-weight: normal;
+}

@@ -1,0 +1,63 @@
+@import "variables";
+@import "mixins";
+
+.cookies {
+  position: absolute;
+  text-align: center;
+  width: 100%;
+  padding: 50px;
+  background-color: $white;
+  color: $black;
+  z-index: 100;
+
+  p {
+    text-align: left;
+    max-width: 600px;
+    margin: 0 auto;
+    @include font-book;
+    font-size: 18px;
+    color: $black;
+    padding-bottom: 15px;
+  }
+
+  .btn-cookies-accept {
+    display: inline-flex;
+    width: auto;
+    text-align: center;
+    margin: 20px auto 0 auto;
+
+    text-decoration: none;
+    font-size: 11px;
+    line-height: 16px;
+    padding: 10px 20px;
+    border-radius: 20px;
+    border-color: transparent;
+    text-transform: uppercase;
+    transition: all 0.2s ease-in-out;
+    @include font-black;
+    color: $white;
+    background-color: $pink-btn;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+}
+
+@include desktop {
+  .cookies {
+    p {
+      font-size: 20px;
+    }
+
+    .btn-cookies-dismiss, .btn-cookies-accept {
+      display: inline-block;
+      float: right;
+      margin-top: 0;
+      margin-left: 20px;
+      font-size: 16px;
+      line-height: 23px;
+      width: 120px;
+    }
+  }
+}

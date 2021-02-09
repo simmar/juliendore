@@ -1,0 +1,227 @@
+@import 'mixins';
+
+.main-content {
+  position: relative;
+  display: block;
+
+  .bloc-content {
+    display: none;
+
+    &.active {
+      display: block;
+    }
+  }
+
+  .content-panel {
+    //margin-top: 20px;
+    .link {
+      padding: 5px 20px;
+      display: flex;
+      align-items: center;
+
+      img {
+        padding: 5px;
+      }
+    }
+
+    form {
+      display: contents;
+      .is-danger {
+        color: $red;
+      }
+    }
+
+    .closed {
+      text-decoration: none;
+    }
+
+    .pochette {
+      animation: inherit;
+      display: block;
+      width: 75%;
+      height: auto;
+      position: relative;
+      top: initial;
+      bottom: initial;
+      left: initial;
+      transform: none;
+      margin-top: 70px;
+      margin-bottom: 140px;
+
+      &:before {
+        display: block;
+        content: '';
+        width: 100%;
+        padding-top: (1 / 1) * 100%;
+      }
+    }
+
+    .bloc-action {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+
+      /* Arrow Button
+	-----------------------------------*/
+      .container-arrow {
+        margin-top: -100px;
+        color: $pink-text;
+        display: inline-block;
+        text-align: center;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 10;
+        width: 100%;
+        cursor: pointer;
+      }
+
+      /* Arrow Bouncing */
+      .container-arrow span {
+        display: inline-block;
+        animation: 0.7s down infinite alternate;
+        -webkit-animation: 0.7s down infinite alternate;
+
+        .arrow-down {
+          width: 96px;
+          height: 50px;
+          fill: $pink-text;
+        }
+      }
+
+      /***Animation Arrow down***/
+      @keyframes down {
+        0% {
+          transform: translateY(0px);
+        }
+        100% {
+          transform: translateY(20px);
+        }
+      }
+      @-webkit-keyframes down {
+        0% {
+          -webkit-transform: translateY(0px);
+        }
+        100% {
+          -webkit-transform: translateY(20px);
+        }
+      }
+
+      .stape,
+      .title-2 {
+        color: $pink-text;
+      }
+
+      .title-2 {
+        @include font-black;
+        text-align: center;
+      }
+
+      .input-choice {
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        background: $white;
+        width: 80%;
+        height: 50px;
+        padding: 2px 15px;
+        @include font-book;
+        font-size: 18px;
+        color: $pink-text;
+
+        &::placeholder {
+          color: $pink-text;
+        }
+      }
+
+      .button {
+        margin-bottom: 20px;
+      }
+
+      .canvas-container {
+        position: relative;
+        background: linear-gradient(
+          180deg,
+          rgba(252, 23, 108, 1) 0%,
+          rgba(245, 117, 178, 1) 100%
+        );
+        border-radius: 50%;
+        padding: $canvas-padding / 2;
+        width: 56px;
+        height: 56px;
+        margin-bottom: 50px;
+      }
+
+      .picture {
+        background: rgba(0, 0, 0, 0.1);
+        border-radius: 49.999%;
+        border: none;
+        position: absolute;
+        right: $canvas-padding / 2;
+        top: $canvas-padding / 2;
+        width: calc(100% - (#{$canvas-padding}));
+        height: calc(100% - (#{$canvas-padding}));
+        z-index: 2;
+      }
+    }
+  }
+
+  @include desktop {
+    picture {
+      position: relative;
+      top: 40px;
+    }
+
+    .content-panel {
+      width: 100%;
+      position: relative;
+
+      &.active {
+        display: none;
+      }
+
+      .link {
+      }
+
+      .pochette {
+        animation: inherit;
+        top: auto;
+        display: block;
+        bottom: auto;
+        left: auto;
+        transform: none;
+        position: relative;
+        order: 2;
+        width: 40%;
+        height: auto;
+        //max-width: 450px;
+        &:before {
+          display: block;
+          content: '';
+          width: 100%;
+          padding-top: (1 / 1) * 100%;
+        }
+      }
+
+      .bloc-action {
+        width: 50%;
+        height: auto;
+        align-self: center;
+        padding: 10px;
+
+        .input-choice {
+          font-size: 18px;
+        }
+
+        .arrow-down {
+          display: none;
+        }
+      }
+
+      .button {
+        margin-bottom: 60px;
+      }
+    }
+  }
+}

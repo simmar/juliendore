@@ -1,0 +1,65 @@
+@import "variables";
+@import "mixins";
+
+.active footer {
+  position: relative;
+}
+
+@include desktop {
+  .active footer {
+    position: fixed;
+  }
+}
+
+footer {
+  position: absolute;
+  bottom: 0;
+  text-align: center;
+  padding: 8px;
+  // background-color: $pink-background;
+  width: 100%;
+
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    li {
+      margin: 0;
+      @include font-book;
+      font-size: 10px;
+      padding-left: 0;
+      float: none;
+
+      a {
+        color: $pink-btn;
+        text-decoration: none;
+        text-transform: uppercase;
+        padding: 8px;
+      }
+    }
+  }
+}
+
+@include desktop {
+  footer {
+    text-align: center;
+    padding: 12px;
+
+    ul {
+      margin: 0 auto;
+      padding: 0;
+      list-style: none;
+
+      li {
+        padding-left: 15px;
+        float: left;
+        font-size: 12px;
+
+        a {
+          padding: 12px;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,28 @@
+@import "mixins";
+
+.logo .main {
+  display: none;
+  transition: all;
+  width: 180px;
+  height: auto;
+  z-index: 10;
+
+  &.white {
+    display: block;
+  }
+}
+
+
+body.active .logo .main {
+  display: block !important;
+
+  &.white {
+    display: none !important;
+  }
+}
+
+@include desktop {
+  .logo .main {
+    width: 277px;
+  }
+}
