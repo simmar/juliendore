@@ -1,76 +1,66 @@
-import React from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import Nav from '../components/Nav';
+import Pochette from '../components/Pochette';
+import {CartContext} from '../Context';
+import users from './imgFile';
 
-const AddPicture = () => {
+const ChooseAlbumPicture = () => {
+  const {values} = useContext(CartContext);
+  const [data, setData] = useState(users);
+  const [isActive, setActive] = useState(false);
+  useEffect(() => {
+    setData(data);
+  }, []);
+
+  function handleClick(name) {
+    const data = users.find((item) => item.url === name.url);
+    const dataUrl = data.url;
+
+    if (name.url === dataUrl) {
+      setActive(!isActive);
+      console.log('isActive', isActive);
+    } else {
+      setActive(isActive);
+      console.log('isActive', isActive);
+    }
+
+    console.log('name.url', name.url);
+    console.log('data', data);
+    console.log('dataUrl', dataUrl);
+  }
+
   return (
     <div className="bloc-content" id="add-picture">
       <div className="content-panel">
         <Nav />
 
         <div className="bloc-row-container">
-          <div className="pochette">
-            <div className="canvas-container">
-              <canvas className="picture" id="canvas" />
-            </div>
-            <p className="name output-pochette">aimée</p>
-          </div>
+          <Pochette values={values.name} />
+
           <div className="bloc-action">
-            {/* <div className="container-arrow scroll-to">
-                <span>
-                  <svg className="icon main arrow-down">
-                    <use xlink:href="./svg/icons.svg#arrow-down"></use>
-                  </svg>
-                </span>
-            </div> */}
             <p className="stape">Etape 2/2</p>
             <p className="title-2">Choisissez une photo</p>
-            <div className="has-text-centered" id="stickers">
-              <div className="sticker selected">
-                <a
-                  href="#"
-                  className="sticker-selector"
-                  data-full="images/stickers/full/jd.png"
-                >
-                  <img alt="" src="images/stickers/jd.png" />
-                </a>
-              </div>
-              <div className="sticker">
-                <a
-                  href="#"
-                  className="sticker-selector"
-                  data-full="images/stickers/full/1.png"
-                >
-                  <img alt="" src="images/stickers/1.png" />
-                </a>
-              </div>
-              <div className="sticker">
-                <a
-                  href="#"
-                  className="sticker-selector"
-                  data-full="images/stickers/full/2.png"
-                >
-                  <img alt="" src="images/stickers/2.png" />
-                </a>
-              </div>
-              <div className="sticker">
-                <a
-                  href="#"
-                  className="sticker-selector"
-                  data-full="images/stickers/full/3.png"
-                >
-                  <img alt="" src="images/stickers/3.png" />
-                </a>
-              </div>
-              <div className="sticker">
-                <a
-                  href="#"
-                  className="sticker-selector"
-                  data-full="images/stickers/full/4.png"
-                >
-                  <img alt="" src="images/stickers/4.png" />
-                </a>
-              </div>
-            </div>
+
+            <ul className="has-text-centered" id="stickers">
+              {data.map((name, key) => {
+                return (
+                  <li
+                    // className={'sticker' + (key == 0 ? ' selected' : '')}
+                    className={`sticker ${isActive === key ? 'selected' : ''}`}
+                    onClick={() => {
+                      setActive(key);
+                      handleClick(name);
+                    }}
+                    key={key}
+                  >
+                    <a type="button" className="sticker-selector">
+                      <img src={`${name.url}`} alt={name.description} />
+                    </a>
+                  </li>
+                );
+              })}
+            </ul>
+
             <div className="separator">
               <p>ou</p>
             </div>
@@ -130,4 +120,4 @@ const AddPicture = () => {
   );
 };
 
-export default AddPicture;
+export default ChooseAlbumPicture;

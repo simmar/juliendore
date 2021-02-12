@@ -4,12 +4,17 @@ import useForm from '../atome/useForm';
 import Nav from '../components/Nav';
 import Pochette from '../components/Pochette';
 
-const ChooseName = () => {
+const ChooseAlbumName = () => {
   const {values, errors, handleChange, handleSubmit} = useForm(login, validate);
 
   function login() {
-    console.log('No errors, submit callback called!');
+    let chooseName = document.getElementById('choose-name');
+    chooseName.classList.remove('active');
+
+    let AddPicture = document.getElementById('add-picture');
+    AddPicture.classList.add('active');
   }
+
   return (
     <div className="bloc-content active" id="choose-name">
       <div className="content-panel">
@@ -49,4 +54,4 @@ const ChooseName = () => {
   );
 };
 
-export default ChooseName;
+export default ChooseAlbumName;

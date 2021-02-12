@@ -15,7 +15,7 @@ const Intro = (props) => {
   };
 
   return (
-    <div id="home" className={!setStatus ? 'active' : null}>
+    <div id="home">
       <div className="home-bloc-centrale">
         <h1 className="title-album">aimée</h1>
       </div>

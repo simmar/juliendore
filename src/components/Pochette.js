@@ -1,12 +1,13 @@
 import React from 'react';
+import jd from '../assets/images/stickers/jd.png';
 
-const Pochette = (props) => {
+const Pochette = ({values}) => {
   return (
     <div className="pochette">
       <div className="canvas-container">
-        <canvas className="picture" />
+        <img className="picture" src={jd} />
       </div>
-      <p className="name output-pochette">{props.values}</p>
+      <p className="name output-pochette">{values}</p>
     </div>
   );
 };

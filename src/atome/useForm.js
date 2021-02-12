@@ -1,11 +1,8 @@
-import {useEffect, useMemo, useState} from 'react';
+import {useContext, useEffect, useMemo, useState} from 'react';
+import {CartContext} from '../Context';
 
 const useForm = (callback, validate) => {
-  // const initialValues = {
-  //   name: 'aimé',
-  // };
-
-  const [values, setValues] = useState({name: 'aimé'});
+  const {values, setValues} = useContext(CartContext);
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
 

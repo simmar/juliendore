@@ -1,5 +1,5 @@
-@import "variables";
-@import "mixins";
+@import 'variables';
+@import 'mixins';
 
 #stickers {
   display: flex;
@@ -22,7 +22,11 @@
     height: 66px;
   }
 
-  background: linear-gradient(180deg, rgba(252, 23, 108, 1) 0%, rgba(245, 117, 178, 1) 100%);
+  background: linear-gradient(
+    180deg,
+    rgba(252, 23, 108, 1) 0%,
+    rgba(245, 117, 178, 1) 100%
+  );
   border-radius: 50%;
 
   &.selected {
@@ -36,10 +40,13 @@
 
   &:not(.selected) {
     a.sticker-selector {
-      &:hover, &:focus, &:active {
+      &:hover,
+      &:focus,
+      &:active {
         img {
           border-radius: 50%;
           background: rgba(255, 255, 255, 0.2);
+          cursor: pointer;
         }
       }
     }
@@ -80,7 +87,9 @@
       transform: translate(-50%, -50%);
     }
 
-    &:hover, &:focus, &:active {
+    &:hover,
+    &:focus,
+    &:active {
       background-color: $white;
       border: 1px solid $pink-btn;
 
@@ -88,9 +97,7 @@
         fill: $pink-text;
       }
     }
-
   }
-
 }
 
 .separator {
