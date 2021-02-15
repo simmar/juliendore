@@ -1,33 +1,22 @@
-import React, {useContext, useEffect, useState} from 'react';
+import React, {useCallback, useContext, useState} from 'react';
 import Nav from '../components/Nav';
 import Pochette from '../components/Pochette';
 import {CartContext} from '../Context';
-import users from './imgFile';
+import data from './imgFile';
 
 const ChooseAlbumPicture = () => {
-  const {values} = useContext(CartContext);
-  const [data, setData] = useState(users);
+  const [user, setUser] = useState(data);
   const [isActive, setActive] = useState(false);
-  useEffect(() => {
-    setData(data);
+  const {values} = useContext(CartContext);
+
+  // useEffect(() => {
+  //   setUser(user);
+  // }, []);
+
+  const handleClick = useCallback((name) => {
+    const test = user.find((item) => item.url === name.url);
+    const userUrl = test.url;
   }, []);
-
-  function handleClick(name) {
-    const data = users.find((item) => item.url === name.url);
-    const dataUrl = data.url;
-
-    if (name.url === dataUrl) {
-      setActive(!isActive);
-      console.log('isActive', isActive);
-    } else {
-      setActive(isActive);
-      console.log('isActive', isActive);
-    }
-
-    console.log('name.url', name.url);
-    console.log('data', data);
-    console.log('dataUrl', dataUrl);
-  }
 
   return (
     <div className="bloc-content" id="add-picture">
@@ -42,19 +31,20 @@ const ChooseAlbumPicture = () => {
             <p className="title-2">Choisissez une photo</p>
 
             <ul className="has-text-centered" id="stickers">
-              {data.map((name, key) => {
+              {user.map((item, key) => {
                 return (
                   <li
                     // className={'sticker' + (key == 0 ? ' selected' : '')}
+
                     className={`sticker ${isActive === key ? 'selected' : ''}`}
                     onClick={() => {
                       setActive(key);
-                      handleClick(name);
+                      handleClick(item);
                     }}
                     key={key}
                   >
                     <a type="button" className="sticker-selector">
-                      <img src={`${name.url}`} alt={name.description} />
+                      <img src={`${item.url}`} alt={item.description} />
                     </a>
                   </li>
                 );
