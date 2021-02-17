@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import validate from '../atome/LoginFormValidationRules';
 import useForm from '../atome/useForm';
 import Nav from '../components/Nav';
@@ -6,6 +6,7 @@ import Pochette from '../components/Pochette';
 
 const ChooseAlbumName = () => {
   const {values, errors, handleChange, handleSubmit} = useForm(login, validate);
+  const [state] = useState('/static/media/jd.ad251307.png');
 
   function login() {
     let chooseName = document.getElementById('choose-name');
@@ -20,7 +21,7 @@ const ChooseAlbumName = () => {
       <div className="content-panel">
         <Nav />
         <div className="bloc-row-container">
-          <Pochette values={values.name} />
+          <Pochette values={values.name} state={state} />
           <div className="bloc-action">
             <p className="stape">Etape 1/2</p>
             <p className="title-2">Choisissez un nom</p>

@@ -26,18 +26,17 @@ const Congrats = () => {
             <p className="title-2">Félicitations, votre cover a été créée</p>
 
             <div className="has-text-centered">
-              <a href="#" className="button item main" id="download">
+              <span className="button item main" id="download">
                 télécharger ma photo pour la partager
-              </a>
+              </span>
             </div>
             <div className="has-text-centered">
-              <a
-                href="#"
+              <span
                 className="button item secondary js-btn-go-home"
                 id="restart-button"
               >
                 recommencer
-              </a>
+              </span>
             </div>
           </div>
         </div>

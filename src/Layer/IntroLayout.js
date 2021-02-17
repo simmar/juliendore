@@ -31,7 +31,7 @@ const Intro = (props) => {
       <div className="footer">
         <div className="has-text-centered">
           <a
-            href="#"
+            href="!#"
             onClick={handleToggle}
             className="button item main"
             id="create-button"

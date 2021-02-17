@@ -8,7 +8,11 @@ const Layout = (props) => {
   return (
     <div className="main-content active" id="main-content">
       <picture className="background">
-        <img className="background responsive" src={background} />
+        <img
+          className="background responsive"
+          src={background}
+          alt="background"
+        />
       </picture>
       <ChooseAlbumName />
       <ChooseAlbumPicture />

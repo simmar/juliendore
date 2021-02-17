@@ -1,22 +1,13 @@
-import React, {useCallback, useContext, useState} from 'react';
+import React, {useContext, useState} from 'react';
+import data from '../components/imgFile';
 import Nav from '../components/Nav';
+import NavLink from '../components/NavLink';
 import Pochette from '../components/Pochette';
 import {CartContext} from '../Context';
-import data from './imgFile';
 
 const ChooseAlbumPicture = () => {
-  const [user, setUser] = useState(data);
-  const [isActive, setActive] = useState(false);
   const {values} = useContext(CartContext);
-
-  // useEffect(() => {
-  //   setUser(user);
-  // }, []);
-
-  const handleClick = useCallback((name) => {
-    const test = user.find((item) => item.url === name.url);
-    const userUrl = test.url;
-  }, []);
+  const [state, setState] = useState('/static/media/jd.ad251307.png');
 
   return (
     <div className="bloc-content" id="add-picture">
@@ -24,32 +15,13 @@ const ChooseAlbumPicture = () => {
         <Nav />
 
         <div className="bloc-row-container">
-          <Pochette values={values.name} />
+          <Pochette values={values.name} state={state} />
 
           <div className="bloc-action">
             <p className="stape">Etape 2/2</p>
             <p className="title-2">Choisissez une photo</p>
 
-            <ul className="has-text-centered" id="stickers">
-              {user.map((item, key) => {
-                return (
-                  <li
-                    // className={'sticker' + (key == 0 ? ' selected' : '')}
-
-                    className={`sticker ${isActive === key ? 'selected' : ''}`}
-                    onClick={() => {
-                      setActive(key);
-                      handleClick(item);
-                    }}
-                    key={key}
-                  >
-                    <a type="button" className="sticker-selector">
-                      <img src={`${item.url}`} alt={item.description} />
-                    </a>
-                  </li>
-                );
-              })}
-            </ul>
+            <NavLink data={data} setState={setState} />
 
             <div className="separator">
               <p>ou</p>
@@ -63,14 +35,13 @@ const ChooseAlbumPicture = () => {
               />
 
               <div className="sticker user hidden">
-                <a
-                  href="#"
+                <span
                   className="sticker-selector"
                   data-full="images/stickers/full/jd.png"
                 >
                   <img alt="" src="images/stickers/jd.png" />
-                </a>
-                <a href="#" className="close" id="clear-user-image-btn">
+                </span>
+                <span className="close" id="clear-user-image-btn">
                   <svg
                     fill="none"
                     height="16"
@@ -83,25 +54,18 @@ const ChooseAlbumPicture = () => {
                       <path d="m.292893 14.2929c-.3905241.3905-.3905241 1.0237 0 1.4142.390524.3905 1.023687.3905 1.414217 0zm15.414207-12.58579c.3905-.39053.3905-1.023693 0-1.414217-.3905-.3905245-1.0237-.3905245-1.4142 0zm-13.99999 13.99999 13.99999-13.99999-1.4142-1.414217-14.000007 14.000007z" />
                     </g>
                   </svg>
-                  <img
-                    src="svg/user-image-close.svg"
-                    alt="Modifier votre image"
-                  />
-                </a>
+                  <img src="svg/user-image-close.svg" alt="Modifier" />
+                </span>
               </div>
 
-              <a href="#" className="button item secondary" id="btn-pick-image">
+              <span className="button item secondary" id="btn-pick-image">
                 charger une photo
-              </a>
+              </span>
             </div>
             <div className="has-text-centered mt-small">
-              <a
-                href="#"
-                className="button item main"
-                id="add-picture-validate"
-              >
+              <span className="button item main" id="add-picture-validate">
                 Valider ma photo
-              </a>
+              </span>
             </div>
           </div>
         </div>

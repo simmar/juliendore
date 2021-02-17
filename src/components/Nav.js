@@ -17,19 +17,18 @@ const Nav = () => {
 
   return (
     <div className="navigation-header">
-      <a href="#" className="link back" id="close-add-picture">
+      <span className="link back" id="close-add-picture">
         <img alt="retour" src={backBlack} />
         <span>Retour</span>
-      </a>
-      <a
-        href="#"
+      </span>
+      <span
         className="link closed js-btn-go-home"
         id="closeall-add-picture"
         onClick={handleToggle}
       >
         <span>Fermer</span>
         <img alt="fermer" src={closeBlack} />
-      </a>
+      </span>
     </div>
   );
 };

@@ -1,20 +1,12 @@
 import React from 'react';
-import jd from '../assets/images/stickers/jd.png';
 
-const Pochette = ({values}) => {
-  const initialValue = [
-    {
-      id: 1,
-      url: jd,
-      description: 'jd',
-    },
-  ];
-  const foodBar = initialValue.find((item) => item.description === 'jd');
-  const resultValue = foodBar['url'];
+const Pochette = ({values, state}) => {
+  console.log('state', state);
+
   return (
     <div className="pochette">
       <div className="canvas-container">
-        <img className="picture" src={resultValue} />
+        <img className="picture" src={state} alt="result choosen" />
       </div>
       <p className="name output-pochette">{values}</p>
     </div>
