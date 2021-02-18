@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Pochette = ({values, state}) => {
-  console.log('state', state);
+  // console.log('state', state);
 
   return (
     <div className="pochette">
