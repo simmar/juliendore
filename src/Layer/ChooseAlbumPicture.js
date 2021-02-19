@@ -1,9 +1,9 @@
 import React, {useContext} from 'react';
+import ImageUpload from '../components/ImageUpload';
 import data from '../components/imgFile';
 import Nav from '../components/Nav';
 import NavLink from '../components/NavLink';
 import Pochette from '../components/Pochette';
-import Upload from '../components/Upload';
 import {CartContext} from '../Context';
 
 const ChooseAlbumPicture = ({state, setState}) => {
@@ -26,7 +26,7 @@ const ChooseAlbumPicture = ({state, setState}) => {
             <div className="separator">
               <p>ou</p>
             </div>
-            <Upload />
+            <ImageUpload />
             <div className="has-text-centered mt-small">
               <span className="button item main" id="add-picture-validate">
                 Valider ma photo
