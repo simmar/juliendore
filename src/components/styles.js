@@ -3,9 +3,9 @@ export const styles = (theme) => ({
     position: 'relative',
     width: '100%',
     height: 200,
-    background: '#333',
+    background: '#fff',
     [theme.breakpoints.up('sm')]: {
-      height: 400,
+      height: 300,
     },
   },
   cropButton: {
@@ -15,12 +15,10 @@ export const styles = (theme) => ({
   controls: {
     padding: 16,
     display: 'flex',
-    flexDirection: 'column',
     alignItems: 'stretch',
     background: '#fff',
     [theme.breakpoints.up('sm')]: {
-      flexDirection: 'row',
-      alignItems: 'center',
+      flexDirection: 'column',
     },
   },
   sliderContainer: {
@@ -37,7 +35,7 @@ export const styles = (theme) => ({
     padding: '22px 0px',
     marginLeft: 16,
     [theme.breakpoints.up('sm')]: {
-      flexDirection: 'row',
+      flexDirection: 'column',
       alignItems: 'center',
       margin: '0 16px',
     },
