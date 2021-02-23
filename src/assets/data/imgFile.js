@@ -1,8 +1,8 @@
-import un from '../assets/images/stickers/1.png';
-import deux from '../assets/images/stickers/2.png';
-import trois from '../assets/images/stickers/3.png';
-import quatre from '../assets/images/stickers/4.png';
-import jd from '../assets/images/stickers/jd.png';
+import un from '../images/stickers/1.png';
+import deux from '../images/stickers/2.png';
+import trois from '../images/stickers/3.png';
+import quatre from '../images/stickers/4.png';
+import jd from '../images/stickers/jd.png';
 
 const data = [
   {

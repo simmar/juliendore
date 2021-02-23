@@ -1,22 +1,35 @@
+.ReactModal__Overlay {
+  background-color: rgba(0, 0, 0, 0.5) !important;
+}
+.ReactModal__Content {
+  width: 30% !important;
+  z-index: 100 !important;
+  margin: 0 auto;
+  border-radius: 16px !important;
+  text-align: center;
+  overflow: hidden !important;
+  inset: none !important;
+  h3 {
+    font-size: 24px;
+    color: $pink-text !important;
+    padding: 10px 0;
+  }
+}
 .wrapper {
   position: absolute;
   top: 50%;
+  width: 100%;
   left: 50%;
-  width: 30%;
-  z-index: 100;
-  transform: translate(-50%, -50%);
-  .inside {
-    padding: 16px;
-    text-align: center;
-    z-index: 11;
-    background: $white;
-    border-radius: 16px;
-    h3 {
-      font-size: 18px;
-      color: $pink-text !important;
-      padding: 10px 0;
-    }
-  }
+  transform: translate(-50%, -50%) !important;
+  padding: 20px;
+  // .inside {
+  //   padding: 16px;
+  //   text-align: center;
+  //   z-index: 11;
+  //   background: $white;
+  //   border-radius: 16px;
+
+  // }
 }
 .column {
   display: flex;
@@ -43,13 +56,20 @@
   }
 }
 .MuiTypography-overline {
-  font-size: 1rem !important;
+  font-size: 1.2rem !important;
   font-weight: 600 !important;
   color: $pink-text !important;
 }
 .MuiSlider-root {
   margin-left: 15px;
   color: $pink-text !important;
+  .MuiSlider-thumb {
+    margin-top: -2px !important;
+  }
+  .MuiSlider-track,
+  .MuiSlider-rail {
+    height: 8px !important;
+  }
 }
 .reactEasyCrop_Container {
   position: absolute;
@@ -84,7 +104,7 @@
   border: 1px solid rgba(255, 255, 255, 0.5);
   box-sizing: border-box;
   box-shadow: 0 0 0 9999em;
-  color: $white;
+  color: $pink-text;
   overflow: hidden;
 }
 
@@ -92,31 +112,6 @@
   border-radius: 50%;
 }
 
-.reactEasyCrop_CropAreaGrid::before {
-  content: ' ';
-  box-sizing: border-box;
-  position: absolute;
-  border: 1px solid rgba(255, 255, 255, 0.5);
-  top: 0;
-  bottom: 0;
-  left: 33.33%;
-  right: 33.33%;
-  border-top: 0;
-  border-bottom: 0;
-}
-
-.reactEasyCrop_CropAreaGrid::after {
-  content: ' ';
-  box-sizing: border-box;
-  position: absolute;
-  border: 1px solid rgba(255, 255, 255, 0.5);
-  top: 33.33%;
-  bottom: 33.33%;
-  left: 0;
-  right: 0;
-  border-left: 0;
-  border-right: 0;
-}
 .controls {
   position: absolute;
   bottom: 0;

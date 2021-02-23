@@ -34,17 +34,17 @@ function Transition(props) {
 }
 
 class ImgDialog extends React.Component {
-  state = {
-    open: false,
-  };
+  // state = {
+  //   open: false,
+  // };
 
-  handleClickOpen = () => {
-    this.setState({open: true});
-  };
+  // handleClickOpen = () => {
+  //   this.setState({open: true});
+  // };
 
-  handleClose = () => {
-    this.setState({open: false});
-  };
+  // handleClose = () => {
+  //   this.setState({open: false});
+  // };
 
   render() {
     const {classes} = this.props;

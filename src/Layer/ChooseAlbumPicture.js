@@ -1,6 +1,6 @@
 import React, {useContext} from 'react';
+import data from '../assets/data/imgFile';
 import Demo from '../components/ImageUpload';
-import data from '../components/imgFile';
 import Nav from '../components/Nav';
 import NavLink from '../components/NavLink';
 import Pochette from '../components/Pochette';
