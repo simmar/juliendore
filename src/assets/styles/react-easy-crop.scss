@@ -1,35 +1,22 @@
-.ReactModal__Overlay {
-  background-color: rgba(0, 0, 0, 0.5) !important;
-}
-.ReactModal__Content {
-  width: 30% !important;
-  z-index: 100 !important;
-  margin: 0 auto;
-  border-radius: 16px !important;
-  text-align: center;
-  overflow: hidden !important;
-  inset: none !important;
+.wrapper {
+  position: absolute;
+  top: 50%;
+  width: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%) !important;
+  padding: 20px;
+  .inside {
+    padding: 16px;
+    text-align: center;
+    z-index: 11;
+    background: $white;
+    border-radius: 16px;
+  }
   h3 {
     font-size: 24px;
     color: $pink-text !important;
     padding: 10px 0;
   }
-}
-.wrapper {
-  position: absolute;
-  top: 50%;
-  width: 100%;
-  left: 50%;
-  transform: translate(-50%, -50%) !important;
-  padding: 20px;
-  // .inside {
-  //   padding: 16px;
-  //   text-align: center;
-  //   z-index: 11;
-  //   background: $white;
-  //   border-radius: 16px;
-
-  // }
 }
 .column {
   display: flex;
@@ -104,7 +91,7 @@
   border: 1px solid rgba(255, 255, 255, 0.5);
   box-sizing: border-box;
   box-shadow: 0 0 0 9999em;
-  color: $pink-text;
+  color: transparent;
   overflow: hidden;
 }
 
