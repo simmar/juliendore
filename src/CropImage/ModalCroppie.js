@@ -4,32 +4,37 @@ import {withStyles} from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import React, {useCallback, useState} from 'react';
 import Cropper from 'react-easy-crop';
-import {getCroppedImg} from './canvasUtils';
 import {styles} from './styles';
 
-const ModalCropppie = ({imageSrc, classes, close}) => {
+const ModalCropppie = ({imageSrc, classes, close, setState, validate}) => {
   const [crop, setCrop] = useState({x: 0, y: 0});
   const [rotation, setRotation] = useState(0);
   const [zoom, setZoom] = useState(1);
   const [croppedAreaPixels, setCroppedAreaPixels] = useState(null);
   const [croppedImage, setCroppedImage] = useState(null);
+  const [open, setOpen] = useState(false);
 
   const onCropComplete = useCallback((croppedArea, croppedAreaPixels) => {
     setCroppedAreaPixels(croppedAreaPixels);
   }, []);
 
-  const showCroppedImage = useCallback(async () => {
-    try {
-      const croppedImage = await getCroppedImg(
-        imageSrc,
-        croppedAreaPixels,
-        rotation
-      );
-      setCroppedImage(croppedImage);
-    } catch (e) {
-      console.error(e);
-    }
-  }, [imageSrc, croppedAreaPixels, rotation]);
+  // const showCroppedImage = useCallback(async () => {
+  //   try {
+  //     const croppedImage = await getCroppedImg(
+  //       imageSrc,
+  //       croppedAreaPixels,
+  //       rotation
+  //     );
+  //     setCroppedImage(croppedImage);
+  //   } catch (e) {
+  //     console.error(e);
+  //   }
+  // }, [imageSrc, croppedAreaPixels, rotation]);
+
+  // const handleValidateUpload = () => {
+  //   console.log('imageSrc', imageSrc);
+  //   setState(imageSrc);
+  // };
 
   return (
     <>
@@ -94,7 +99,7 @@ const ModalCropppie = ({imageSrc, classes, close}) => {
                   Annuler
                 </Button>
                 <Button
-                  onClick={showCroppedImage}
+                  onClick={validate}
                   variant="contained"
                   className="button item main"
                 >

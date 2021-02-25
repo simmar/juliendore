@@ -6,13 +6,14 @@ import React, {useState} from 'react';
 import {getRotatedImage} from '../CropImage/canvasUtils';
 import ModalCroppie from '../CropImage/ModalCroppie';
 import {styles} from '../CropImage/styles';
+
 const ORIENTATION_TO_ANGLE = {
   3: 180,
   6: 90,
   8: -90,
 };
 
-const Demo = () => {
+const Upload = ({setState}) => {
   const [imageSrc, setImageSrc] = useState(null);
   const [open, setOpen] = useState(false);
 
@@ -22,6 +23,11 @@ const Demo = () => {
   const handleClose = () => {
     setOpen(false);
     setImageSrc(null);
+  };
+
+  const validate = () => {
+    setState(imageSrc);
+    setOpen(false);
   };
 
   const onFileChange = async (e) => {
@@ -42,12 +48,17 @@ const Demo = () => {
 
   const body = (
     <div>
-      <ModalCroppie imageSrc={imageSrc} close={handleClose} />
+      <ModalCroppie
+        imageSrc={imageSrc}
+        close={handleClose}
+        setState={setState}
+        validate={validate}
+      />
     </div>
   );
 
   return (
-    <div>
+    <>
       <div>
         <input
           type="file"
@@ -64,7 +75,7 @@ const Demo = () => {
       <Modal aria-labelledby="customized-dialog-title" open={open}>
         {body}
       </Modal>
-    </div>
+    </>
   );
 };
 
@@ -75,4 +86,4 @@ function readFile(file) {
     reader.readAsDataURL(file);
   });
 }
-export default withStyles(styles)(Demo);
+export default withStyles(styles)(Upload);

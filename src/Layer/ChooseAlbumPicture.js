@@ -1,14 +1,14 @@
 import React, {useContext} from 'react';
 import data from '../assets/data/imgFile';
-import Demo from '../components/ImageUpload';
+import ImageUpload from '../components/ImageUpload';
 import Nav from '../components/Nav';
 import NavLink from '../components/NavLink';
+import NewUpload from '../components/NewImageUpload';
 import Pochette from '../components/Pochette';
 import {CartContext} from '../Context';
 
 const ChooseAlbumPicture = ({state, setState}) => {
   const {values} = useContext(CartContext);
-
   return (
     <div className="bloc-content" id="add-picture">
       <div className="content-panel">
@@ -26,7 +26,9 @@ const ChooseAlbumPicture = ({state, setState}) => {
             <div className="separator">
               <p>ou</p>
             </div>
-            <Demo />
+
+            <NewUpload setState={setState} />
+            <ImageUpload setState={setState} />
             <div className="has-text-centered mt-small">
               <span className="button item main" id="add-picture-validate">
                 Valider ma photo
