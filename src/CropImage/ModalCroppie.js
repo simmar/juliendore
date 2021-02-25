@@ -4,6 +4,8 @@ import {withStyles} from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import React, {useCallback, useState} from 'react';
 import Cropper from 'react-easy-crop';
+import {getCroppedImg} from './canvasUtils';
+import ImgDialog from './ImgDialog';
 import {styles} from './styles';
 
 const ModalCropppie = ({imageSrc, classes, close, setState, validate}) => {
@@ -12,29 +14,28 @@ const ModalCropppie = ({imageSrc, classes, close, setState, validate}) => {
   const [zoom, setZoom] = useState(1);
   const [croppedAreaPixels, setCroppedAreaPixels] = useState(null);
   const [croppedImage, setCroppedImage] = useState(null);
-  const [open, setOpen] = useState(false);
 
   const onCropComplete = useCallback((croppedArea, croppedAreaPixels) => {
     setCroppedAreaPixels(croppedAreaPixels);
   }, []);
 
-  // const showCroppedImage = useCallback(async () => {
-  //   try {
-  //     const croppedImage = await getCroppedImg(
-  //       imageSrc,
-  //       croppedAreaPixels,
-  //       rotation
-  //     );
-  //     setCroppedImage(croppedImage);
-  //   } catch (e) {
-  //     console.error(e);
-  //   }
-  // }, [imageSrc, croppedAreaPixels, rotation]);
+  const showCroppedImage = useCallback(async () => {
+    try {
+      const croppedImage = await getCroppedImg(
+        imageSrc,
+        croppedAreaPixels,
+        rotation
+      );
+      console.log('donee', {croppedImage});
+      setCroppedImage(croppedImage);
+    } catch (e) {
+      console.error(e);
+    }
+  }, [imageSrc, croppedAreaPixels, rotation]);
 
-  // const handleValidateUpload = () => {
-  //   console.log('imageSrc', imageSrc);
-  //   setState(imageSrc);
-  // };
+  const onClose = useCallback(() => {
+    setCroppedImage(null);
+  }, []);
 
   return (
     <>
@@ -99,6 +100,7 @@ const ModalCropppie = ({imageSrc, classes, close, setState, validate}) => {
                   Annuler
                 </Button>
                 <Button
+                  // onClick={showCroppedImage}
                   onClick={validate}
                   variant="contained"
                   className="button item main"
@@ -107,7 +109,7 @@ const ModalCropppie = ({imageSrc, classes, close, setState, validate}) => {
                 </Button>
               </div>
             </div>
-            {/* <ImgDialog img={croppedImage} onClose={onClose} /> */}
+            <ImgDialog img={croppedImage} onClose={onClose} />
           </div>
         </div>
       ) : null}

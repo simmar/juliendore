@@ -1,10 +1,7 @@
-import {Typography} from '@material-ui/core';
-import AppBar from '@material-ui/core/AppBar';
 import Dialog from '@material-ui/core/Dialog';
 import IconButton from '@material-ui/core/IconButton';
 import Slide from '@material-ui/core/Slide';
 import {withStyles} from '@material-ui/core/styles';
-import Toolbar from '@material-ui/core/Toolbar';
 import CloseIcon from '@material-ui/icons/Close';
 import React from 'react';
 
@@ -56,24 +53,13 @@ class ImgDialog extends React.Component {
         onClose={this.props.onClose}
         TransitionComponent={Transition}
       >
-        <AppBar className={classes.appBar}>
-          <Toolbar>
-            <IconButton
-              color="inherit"
-              onClick={this.props.onClose}
-              aria-label="Close"
-            >
-              <CloseIcon />
-            </IconButton>
-            <Typography
-              variant="title"
-              color="inherit"
-              className={classes.flex}
-            >
-              Cropped image
-            </Typography>
-          </Toolbar>
-        </AppBar>
+        <IconButton
+          color="inherit"
+          onClick={this.props.onClose}
+          aria-label="Close"
+        >
+          <CloseIcon />
+        </IconButton>
         <div className={classes.imgContainer}>
           <img src={this.props.img} alt="Cropped" className={classes.img} />
         </div>

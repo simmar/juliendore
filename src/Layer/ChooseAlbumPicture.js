@@ -3,7 +3,7 @@ import data from '../assets/data/imgFile';
 import ImageUpload from '../components/ImageUpload';
 import Nav from '../components/Nav';
 import NavLink from '../components/NavLink';
-import NewUpload from '../components/NewImageUpload';
+import NewUpload from '../components/NewUpload';
 import Pochette from '../components/Pochette';
 import {CartContext} from '../Context';
 
@@ -27,7 +27,8 @@ const ChooseAlbumPicture = ({state, setState}) => {
               <p>ou</p>
             </div>
 
-            <NewUpload setState={setState} />
+            <NewUpload state={state} />
+
             <ImageUpload setState={setState} />
             <div className="has-text-centered mt-small">
               <span className="button item main" id="add-picture-validate">

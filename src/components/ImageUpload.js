@@ -2,7 +2,8 @@
 import Modal from '@material-ui/core/Modal';
 import {withStyles} from '@material-ui/core/styles';
 import {getOrientation} from 'get-orientation/browser';
-import React, {useState} from 'react';
+import React, {useContext, useState} from 'react';
+import {CartContext} from '../Context';
 import {getRotatedImage} from '../CropImage/canvasUtils';
 import ModalCroppie from '../CropImage/ModalCroppie';
 import {styles} from '../CropImage/styles';
@@ -16,6 +17,7 @@ const ORIENTATION_TO_ANGLE = {
 const Upload = ({setState}) => {
   const [imageSrc, setImageSrc] = useState(null);
   const [open, setOpen] = useState(false);
+  const {setisActive} = useContext(CartContext);
 
   const handleOpen = () => {
     setOpen(true);
@@ -28,6 +30,7 @@ const Upload = ({setState}) => {
   const validate = () => {
     setState(imageSrc);
     setOpen(false);
+    setisActive(true);
   };
 
   const onFileChange = async (e) => {

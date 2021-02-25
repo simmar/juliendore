@@ -1,19 +1,22 @@
-import React from 'react';
+import React, {useContext} from 'react';
+import {CartContext} from '../Context';
 
 const NewImageUpload = ({state}) => {
+  console.log('state', state);
+  const {isActive, setisActive} = useContext(CartContext);
+
   return (
-    <div className="sticker user hidden">
+    <div className={`sticker user ${isActive ? '' : 'hidden'}`}>
       <span
         className="sticker-selector"
         data-full="images/stickers/full/jd.png"
-        href="javascript:void(0);"
       >
         <img alt="" src={state} />
       </span>
       <span
         className="close"
-        href="javascript:void(0)"
         id="clear-user-image-btn"
+        onClick={() => setisActive(false)}
       >
         <svg
           fill="none"
