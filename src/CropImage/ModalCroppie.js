@@ -35,6 +35,7 @@ const ModalCropppie = ({imageSrc, classes, close, setState, validate}) => {
 
   const onClose = useCallback(() => {
     setCroppedImage(null);
+    console.log('toto');
   }, []);
 
   return (
@@ -100,8 +101,8 @@ const ModalCropppie = ({imageSrc, classes, close, setState, validate}) => {
                   Annuler
                 </Button>
                 <Button
-                  // onClick={showCroppedImage}
-                  onClick={validate}
+                  onClick={showCroppedImage}
+                  //onClick={validate}
                   variant="contained"
                   className="button item main"
                 >
@@ -109,7 +110,7 @@ const ModalCropppie = ({imageSrc, classes, close, setState, validate}) => {
                 </Button>
               </div>
             </div>
-            <ImgDialog img={croppedImage} onClose={onClose} />
+            <ImgDialog croppedImage={croppedImage} onClose={onClose} />
           </div>
         </div>
       ) : null}

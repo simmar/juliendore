@@ -2,7 +2,6 @@ import React, {useContext} from 'react';
 import {CartContext} from '../Context';
 
 const NewImageUpload = ({state}) => {
-  console.log('state', state);
   const {isActive, setisActive} = useContext(CartContext);
 
   return (
