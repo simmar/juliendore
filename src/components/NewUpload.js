@@ -5,12 +5,12 @@ const NewImageUpload = ({state}) => {
   const {isActive, setisActive} = useContext(CartContext);
 
   return (
-    <div className={`sticker user ${isActive ? '' : 'hidden'}`}>
+    <div className={`sticker user selected ${isActive ? '' : 'hidden'}`}>
       <span
         className="sticker-selector"
         data-full="images/stickers/full/jd.png"
       >
-        <img alt="" src={state} />
+        <img className="picture" alt="" src={state} />
       </span>
       <span
         className="close"

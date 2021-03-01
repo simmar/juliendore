@@ -2,10 +2,10 @@ import {Slider} from '@material-ui/core';
 import Button from '@material-ui/core/Button';
 import {withStyles} from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
-import React, {useCallback, useState} from 'react';
+import React, {useCallback, useContext, useEffect, useState} from 'react';
 import Cropper from 'react-easy-crop';
+import {CartContext} from '../Context';
 import {getCroppedImg} from './canvasUtils';
-import ImgDialog from './ImgDialog';
 import {styles} from './styles';
 
 const ModalCropppie = ({imageSrc, classes, close, setState, validate}) => {
@@ -14,6 +14,15 @@ const ModalCropppie = ({imageSrc, classes, close, setState, validate}) => {
   const [zoom, setZoom] = useState(1);
   const [croppedAreaPixels, setCroppedAreaPixels] = useState(null);
   const [croppedImage, setCroppedImage] = useState(null);
+  const {setisActive} = useContext(CartContext);
+  useEffect(() => {
+    const id = setInterval(() => {
+      console.log('close');
+    }, 2000);
+    return () => {
+      clearInterval(id);
+    };
+  }, [close]);
 
   const onCropComplete = useCallback((croppedArea, croppedAreaPixels) => {
     setCroppedAreaPixels(croppedAreaPixels);
@@ -28,15 +37,12 @@ const ModalCropppie = ({imageSrc, classes, close, setState, validate}) => {
       );
       console.log('donee', {croppedImage});
       setCroppedImage(croppedImage);
+      setState(croppedImage);
+      setisActive(true);
     } catch (e) {
       console.error(e);
     }
   }, [imageSrc, croppedAreaPixels, rotation]);
-
-  const onClose = useCallback(() => {
-    setCroppedImage(null);
-    console.log('toto');
-  }, []);
 
   return (
     <>
@@ -98,10 +104,13 @@ const ModalCropppie = ({imageSrc, classes, close, setState, validate}) => {
                   className="button item secondary"
                   onClick={close}
                 >
-                  Annuler
+                  Fermer
                 </Button>
                 <Button
-                  onClick={showCroppedImage}
+                  onClick={() => {
+                    showCroppedImage();
+                    close();
+                  }}
                   //onClick={validate}
                   variant="contained"
                   className="button item main"
@@ -110,7 +119,7 @@ const ModalCropppie = ({imageSrc, classes, close, setState, validate}) => {
                 </Button>
               </div>
             </div>
-            <ImgDialog croppedImage={croppedImage} onClose={onClose} />
+            {/* <ImgDialog croppedImage={croppedImage} onClose={onClose} /> */}
           </div>
         </div>
       ) : null}

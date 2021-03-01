@@ -14,7 +14,7 @@ const ORIENTATION_TO_ANGLE = {
   8: -90,
 };
 
-const Upload = ({setState}) => {
+const Upload = ({setState, state}) => {
   const [imageSrc, setImageSrc] = useState(null);
   const [open, setOpen] = useState(false);
   const {setisActive} = useContext(CartContext);
@@ -25,12 +25,6 @@ const Upload = ({setState}) => {
   const handleClose = () => {
     setOpen(false);
     setImageSrc(null);
-  };
-
-  const validate = () => {
-    setState(imageSrc);
-    setOpen(false);
-    setisActive(true);
   };
 
   const onFileChange = async (e) => {
@@ -55,7 +49,7 @@ const Upload = ({setState}) => {
         imageSrc={imageSrc}
         close={handleClose}
         setState={setState}
-        validate={validate}
+        state={state}
       />
     </div>
   );

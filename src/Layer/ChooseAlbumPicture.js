@@ -29,7 +29,7 @@ const ChooseAlbumPicture = ({state, setState}) => {
 
             <NewUpload state={state} />
 
-            <ImageUpload setState={setState} />
+            <ImageUpload setState={setState} state={state} />
             <div className="has-text-centered mt-small">
               <span className="button item main" id="add-picture-validate">
                 Valider ma photo
